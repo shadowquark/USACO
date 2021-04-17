@@ -25,16 +25,15 @@ for i in range(n):
     for j in range(1, n):
         # Only 'r' and 'b' are different, while 'r' - 'b' = 16.
         diff = lambda x, y: abs(ord(x) - ord(y)) == 16
-        if not flag1 or diff(neck[i + j], flag1):
-            flag1 = ''
-        else:
-            flag1 = flag1 if neck[i + j] == 'w' else neck[i + j]
-            count1 += 1
-        if not flag2 or diff(neck[i - j - 1], flag2):
-            flag2 = ''
-        else:
-            flag2 = flag2 if neck[i - j - 1] == 'w' else neck[i - j - 1]
-            count2 += 1
+        def check(flag, count, color):
+            if not flag or diff(color, flag):
+                flag = ''
+            else:
+                flag = flag if color == 'w' else color
+                count += 1
+            return flag, count
+        flag1, count1 = check(flag1, count1, neck[i + j])
+        flag2, count2 = check(flag2, count2, neck[i - j - 1])
         if not (flag1 or flag2):
             break
     maxlen = maxlen if count1 + count2 < maxlen else count1 + count2 
