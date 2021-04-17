@@ -29,8 +29,7 @@ def quicksort(l, r):
             j -= 1
         if i <= j:
             read[i], read[j] = read[j], read[i]
-            i += 1
-            j -= 1
+            i, j = i + 1, j - 1
     if i < r:
         quicksort(i, r)
     if j > l:
