@@ -4,6 +4,7 @@ LANG: PYTHON3
 TASK:
 """
 
+import sys
 import math
 import functools as ft
 import random as rnd
