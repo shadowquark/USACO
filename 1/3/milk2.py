@@ -12,8 +12,8 @@ import random as rnd
 F = lambda z: [*ft.reduce(lambda x, y: map(y, x), [z[:1]] + z[1:])][0]
 FF = lambda *z: [*ft.reduce(lambda x, y: map(y, x), z)]
 
-fin = open ("milk2.in", 'r')
-fout = open ("milk2.out", 'w')
+fin = open("milk2.in", 'r')
+fout = open("milk2.out", 'w')
 
 n = int(fin.readline())
 begin, end = [int(i) for i in fin.readline().split(' ')]
@@ -21,8 +21,13 @@ maxint, maxlen = 0, end - begin
 for _ in range(n - 1):
     l, r = [int(i) for i in fin.readline().split(' ')]
     if l > end:
-        maxint = maxint if maxint > end - l else end - l
+        maxint = max(maxint, l - end)
         begin, end = l, r
-    elif l < 
+    else:
+        end = max(end, r)
+        maxlen = max(maxlen, end - begin)
+#print(maxlen, maxint)
+fout.write(str(maxlen) + ' ' + str(maxint) + '\n')
+        
 fout.close()
 

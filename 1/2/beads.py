@@ -12,8 +12,8 @@ import random as rnd
 F = lambda z: [*ft.reduce(lambda x, y: map(y, x), [z[:1]] + z[1:])][0]
 FF = lambda *z: [*ft.reduce(lambda x, y: map(y, x), z)]
 
-fin = open ("beads.in", 'r')
-fout = open ("beads.out", 'w')
+fin = open("beads.in", 'r')
+fout = open("beads.out", 'w')
 
 n = int(fin.readline())
 neck = fin.readline()[:-1]

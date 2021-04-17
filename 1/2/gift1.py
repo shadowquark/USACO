@@ -13,8 +13,8 @@ import sys
 F = lambda z: [*ft.reduce(lambda x, y: map(y, x), [z[:1]] + z[1:])][0]
 FF = lambda *z: [*ft.reduce(lambda x, y: map(y, x), z)]
 
-fin = open ("gift1.in", 'r')
-fout = open ("gift1.out", 'w')
+fin = open("gift1.in", 'r')
+fout = open("gift1.out", 'w')
 
 m = int(fin.readline())
 names = [fin.readline()[:-1] for _ in range(m)]

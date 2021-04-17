@@ -12,8 +12,8 @@ import random as rnd
 F = lambda z: [*ft.reduce(lambda x, y: map(y, x), [z[:1]] + z[1:])][0]
 FF = lambda *z: [*ft.reduce(lambda x, y: map(y, x), z)]
 
-fin = open (".in", 'r')
-fout = open (".out", 'w')
+fin = open(".in", 'r')
+fout = open(".out", 'w')
 
 
 

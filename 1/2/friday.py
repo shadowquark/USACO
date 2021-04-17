@@ -12,8 +12,8 @@ import random as rnd
 F = lambda z: [*ft.reduce(lambda x, y: map(y, x), [z[:1]] + z[1:])][0]
 FF = lambda *z: [*ft.reduce(lambda x, y: map(y, x), z)]
 
-fin = open ("friday.in", 'r')
-fout = open ("friday.out", 'w')
+fin = open("friday.in", 'r')
+fout = open("friday.out", 'w')
 
 n = int(fin.readline())
 month = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
