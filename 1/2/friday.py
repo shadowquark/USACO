@@ -16,16 +16,14 @@ fin = open ("friday.in", 'r')
 fout = open ("friday.out", 'w')
 
 n = int(fin.readline())
-month1 = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-month2 = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-month1 = [13] + [
-    ft.reduce(lambda x, y: x + y, month1[:i + 1]) + 13
-    for i in range(len(month1) - 1)
+month = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+day13 = lambda z: [13] + [
+    ft.reduce(lambda x, y: x + y, z[:i + 1]) + 13
+    for i in range(len(z) - 1)
 ]
-month2 = [13] + [
-    ft.reduce(lambda x, y: x + y, month2[:i + 1]) + 13
-    for i in range(len(month2) - 1)
-]
+month1 = day13(month)
+month[1] -= 1
+month2 = day13(month)
 week = [0] * 7
 shift = 0
 for i in range(n):
