@@ -36,8 +36,8 @@ for i in range(n):
         flag2, count2 = check(flag2, count2, neck[i - j - 1])
         if not (flag1 or flag2):
             break
-    maxlen = maxlen if count1 + count2 < maxlen else count1 + count2 
-fout.write(str(maxlen if maxlen < n else n) + '\n')
+    maxlen = max(maxlen, count1 + count2)
+fout.write(str(min(maxlen, n)) + '\n')
 
 fout.close()
 
