@@ -31,10 +31,11 @@ f4 = lambda x: [[x[i][n - j - 1] for j in range(n)] for i in range(n)]
 check(f1(ori), 1)
 check(f2(ori), 2)
 check(f3(ori), 3)
-check(f4(ori), 4)
-check(F([ori, f4, f1]), 5)
-check(F([ori, f4, f2]), 5)
-check(F([ori, f4, f3]), 5)
+flip = [ori, f4]
+check(F(flip), 4)
+check(F(flip + [f1]), 5)
+check(F(flip + [f2]), 5)
+check(F(flip + [f3]), 5)
 check(ori, 6)
 fout.write("7\n")
 
