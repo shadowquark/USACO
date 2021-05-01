@@ -28,8 +28,7 @@ def quicksort(l, r):
         while (j > l and read[j][0] > x):
             j -= 1
         if i <= j:
-            read[i], read[j] = read[j], read[i]
-            i, j = i + 1, j - 1
+            read[i], read[j], i, j = read[j], read[i], i + 1, j - 1
     if i < r:
         quicksort(i, r)
     if j > l:
