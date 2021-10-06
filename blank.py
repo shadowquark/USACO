@@ -9,7 +9,7 @@ import math
 import functools as ft
 import random as rnd
 
-# g(f(x)) -> F([x, f, g...])
+# g(f(x)) -> F(x, f, g...)
 # g(f([x1, x2...])) -> FF([x1, x2...], f, g...)
 def F(*z):
     z = list(z)
