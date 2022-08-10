@@ -7,6 +7,7 @@ TASK:
 import sys
 import math
 import functools as ft
+from functools import partial as par
 import random as rnd
 
 # g(f(x)) -> F(x, f, g...)
