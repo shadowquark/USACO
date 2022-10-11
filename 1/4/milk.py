@@ -13,7 +13,7 @@ import random as rnd
 # g(f(x)) -> F(x, f, g...)
 # g(f([x1, x2...])) -> FF([x1, x2...], f, g...)
 def F(*z):
-    z = list(z)
+    z = [*z]
     return [*ft.reduce(lambda x, y: map(y, x), [z[:1]] + z[1:])][0]
 FF = lambda *z: [*ft.reduce(lambda x, y: map(y, x), z)]
 # f(x1, x2..., y1, y2...) -> fyx(f, y1, y2...)(x1, x2...)
@@ -31,7 +31,6 @@ for line in fin.readlines():
     a.append(temp1)
     b.append(temp2)
 
-sys.setrecursionlimit(10000)
 def quicksort(l, r):
     if l > r:
         return
@@ -47,7 +46,31 @@ def quicksort(l, r):
             quicksort(i, r)
         if j > l:
             quicksort(l, j)
-quicksort(0, n - 1)
+def bucketsort():
+    obj = [*zip(a, b)]
+    if obj == []:
+        return [], []
+    bucket8bit = [[[] for _ in range(256)] for _ in range(4)]
+    for x in obj:
+        bucket8bit[0][x[0] & 0xff].append(x)
+    for bucket in bucket8bit[0]:
+        for x in bucket:
+            bucket8bit[1][(x[0] & 0xffff) >> 8].append(x)
+    for bucket in bucket8bit[1]:
+        for x in bucket:
+            bucket8bit[2][(x[0] & 0xffffff) >> 16].append(x)
+    for bucket in bucket8bit[2]:
+        for x in bucket:
+            bucket8bit[3][x[0] >> 24].append(x)
+    obj = []
+    for bucket in bucket8bit[3]:
+        for x in bucket:
+            obj.append(x)
+    obj = [*zip(*obj)]
+    return obj[0], obj[1]
+#sys.setrecursionlimit(10000)
+#quicksort(0, n - 1)
+a, b = bucketsort()
 tot = 0
 for x, y in zip(a, b):
     if m > y:
