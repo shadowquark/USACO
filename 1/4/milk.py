@@ -32,13 +32,13 @@ for line in fin.readlines():
     b.append(temp2)
 
 def quicksort(l, r):
-    if l > r:
+    if not l < r:
         return
     i, j, x = l, r, a[(l + r) // 2]
     while (i <= j):
         while (i < r and a[i] < x):
             i += 1
-        while (l < j and a[j] > x):
+        while (j > l and a[j] > x):
             j -= 1
         if i <= j:
             a[i], a[j], b[i], b[j], i, j = a[j], a[i], b[j], b[i], i + 1, j - 1
@@ -48,7 +48,7 @@ def quicksort(l, r):
             quicksort(l, j)
 def bucketsort():
     obj = [*zip(a, b)]
-    if obj == []:
+    if not obj:
         return [], []
     bucket8bit = [[[] for _ in range(256)] for _ in range(4)]
     for x in obj:
