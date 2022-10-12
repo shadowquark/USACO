@@ -31,21 +31,21 @@ for line in fin.readlines():
     a.append(temp1)
     b.append(temp2)
 
-def quicksort(l, r):
+def quicksort(l, r, *obj):
     if not l < r:
-        return
-    i, j, x = l, r, a[(l + r) // 2]
-    while (i <= j):
-        while (i < r and a[i] < x):
+        return obj
+    i, j, x, y = l, r, obj[0][r], obj[1][r]
+    while (i < j):
+        while (i < j and obj[0][i] <= x):
             i += 1
-        while (j > l and a[j] > x):
+        obj[0][j], obj[1][j] = obj[0][i], obj[1][i]
+        while (i < j and obj[0][j] > x):
             j -= 1
-        if i <= j:
-            a[i], a[j], b[i], b[j], i, j = a[j], a[i], b[j], b[i], i + 1, j - 1
-        if i < r:
-            quicksort(i, r)
-        if j > l:
-            quicksort(l, j)
+        obj[0][i], obj[1][i] = obj[0][j], obj[1][j]
+    obj[0][i], obj[1][i] = x, y
+    quicksort(l, i - 1, *obj)
+    quicksort(i + 1, r, *obj)
+    return obj
 def bucketsort():
     obj = [*zip(a, b)]
     if not obj:
@@ -67,9 +67,9 @@ def bucketsort():
         for x in bucket:
             obj.append(x)
     obj = [*zip(*obj)]
-    return obj[0], obj[1]
+    return obj
 #sys.setrecursionlimit(10000)
-#quicksort(0, n - 1)
+#a, b = quicksort(0, n - 1, a, b)
 a, b = bucketsort()
 tot = 0
 for x, y in zip(a, b):

@@ -21,18 +21,17 @@ a = [int(x[:-1]) for x in fin.readlines()]
 def quicksort(l, r, obj):
     if not l < r:
         return obj
-    i, j, x = l, r, obj[(l + r) // 2]
-    while (i <= j):
-        while (i < r and obj[i] < x):
+    i, j, x = l, r, obj[r]
+    while (i < j):
+        while (i < j and obj[i] <= x):
             i += 1
-        while (j > l and obj[j] > x):
+        obj[j] = obj[i]
+        while (i < j and obj[j] > x):
             j -= 1
-        if (i <= j):
-            obj[i], obj[j], i, j = obj[j], obj[i], i + 1, j - 1
-        if i < r:
-            quicksort(l, j, obj)
-        if j > l:
-            quicksort(i, r, obj)
+        obj[i] = obj[j]
+    obj[i] = x
+    quicksort(l, i - 1, obj)
+    quicksort(i + 1, r, obj)
     return obj
 def bucketsort(obj):
     if not obj:
@@ -65,8 +64,8 @@ for x in a[1:]:
         num += 1
     tot += 1
     last = x
-#diff = quicksort(0, len(diff) - 1, diff)
-diff = bucketsort(diff)
+diff = quicksort(0, len(diff) - 1, diff)
+#diff = bucketsort(diff)
 for i in range(num - m):
     tot += diff[i]
 fout.write(str(tot) + '\n')
