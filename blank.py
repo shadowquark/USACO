@@ -19,8 +19,8 @@ FF = lambda *z: [*reduce(lambda x, y: map(y, x), z)]
 # f(x1, x2..., y1, y2...) -> fyx(f, y1, y2...)(x1, x2...)
 fyx = lambda f, *x: lambda *y: f(*y, *x)
 
-fin = open(".in", 'r')
-fout = open(".out", 'w')
+#fin = open(".in", 'r')
+#fout = open(".out", 'w')
 
-fout.close()
+#fout.close()
 
